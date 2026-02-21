@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="cart-body">
+
+<h2 class="cart-title">Your Cart</h2>
+
+<div class="cart-container">
+
+{% if cart_items %}
+
+  {% for item in cart_items %}
+  <div class="cart-item">
+
+    <div class="cart-info">
+      <h4>{{ item.product.name }}</h4>
+      <p class="price">₹ {{ item.product.price }}</p>
+    </div>
+
+    <div class="cart-qty">
+      <a href="/decrease/{{ item.id }}" class="qty-btn">−</a>
+      <span>{{ item.quantity }}</span>
+      <a href="/increase/{{ item.id }}" class="qty-btn">+</a>
+    </div>
+
+    <div class="cart-subtotal">
+      ₹{{ item.subtotal }}
+    </div>
+
+    <a href="/remove-from-cart/{{ item.id }}"
+       class="remove-btn"
+       onclick="animateRemove(event, this)">
+       ✕ Remove
+    </a>
+
+  </div>
+  {% endfor %}
+
+  <div class="cart-total">
+    Total: ₹{{ total }}
+  </div>
+<a href="/checkout" class="btn primary">
+  Proceed to Checkout
+</a>{% else %}
+  <p class="empty-cart">Your cart is empty 😢</p>
+{% endif %}
+
+</div>
+
+<script>
+function animateRemove(e, el) {
+  e.preventDefault();
+  const item = el.closest('.cart-item');
+
+  item.style.transition = 'all 0.4s ease';
+  item.style.transform = 'translateX(80px)';
+  item.style.opacity = '0';
+
+  setTimeout(() => {
+    window.location.href = el.href;
+  }, 400);
+}
+</script>
+
+</body>
+</html>

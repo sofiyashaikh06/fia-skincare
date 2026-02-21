@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | FIA Skincare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">FIA 🌙</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="{{ url_for('products') }}">Products</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="{{ url_for('chatbot') }}">AI Chatbot</a></li>
+      <li><a href="/cart">Cart 🛒</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="checkout">
+  <h2>Secure <span>Checkout</span></h2>
+
+  <div class="checkout-container">
+
+    <!-- Billing Details -->
+    <div class="checkout-form">
+      <h3>Billing Details</h3>
+
+      <form method="POST">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="Phone Number" required>
+        <textarea name="address" placeholder="Full Address" required></textarea>
+
+        <select name="payment" required>
+          <option value="">Select Payment Method</option>
+          <option value="cod">Cash on Delivery</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="upi">UPI</option>
+        </select>
+
+        <button type="submit" class="btn primary">
+          Place Order
+        </button>
+      </form>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="checkout-summary">
+      <h3>Order Summary</h3>
+    {% for item in cart_items %}
+<div class="summary-item">
+  <span>{{ item.product.name }} x {{ item.quantity }}</span>
+  <span>₹{{ item.subtotal }}</span>
+</div>
+{% endfor %}
+
+      <div class="summary-item">
+        <span>Shipping</span>
+        <span>Free</span>
+      </div>
+
+     <div class="summary-total">
+  <span>Total</span>
+  <span>₹{{ total }}</span>
+</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 FIA Skincare · AI-Assisted Beauty</p>
+</footer>
+
+</body>
+</html>

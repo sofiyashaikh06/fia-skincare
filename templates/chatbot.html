@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FIA AI Skin Advisor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="chat-body">
+
+<header class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo"><a href="/">FIA 🌙</a></div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="{{ url_for('products') }}">Products</a></li>
+      <li><a class="active">AI Assistant</a></li>
+      <li><a href="/cart">Cart 🛒</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="chatbot-page">
+  <div class="chatbox">
+
+    <div class="chat-header pink">
+      <h3>FIA 🌙 Skin Advisor</h3>
+      <span>AI Guided Care</span>
+    </div>
+
+    <div class="chat-content">
+      <p class="bot-message">
+        Hi 👋 I’ll help you find the best skincare routine 💖  
+        Just answer 2 quick questions!
+      </p>
+
+      <form action="/recommend" method="POST" class="chat-form">
+
+        <label>💧 Skin Type</label>
+        <select name="skin_type" required>
+          <option value="">Select</option>
+          <option>Dry</option>
+          <option>Oily</option>
+          <option>Normal</option>
+          <option>Combination</option>
+        </select>
+<br>
+        <label>🎯 Concern</label>
+        <select name="concern" required>
+          <option value="">Select</option>
+          <option>Acne</option>
+          <option>Pigmentation</option>
+          <option>Dryness</option>
+          <option>Dullness</option>
+        </select>
+
+        <button type="submit" class="btn primary">
+                  ✨ Get My Routine
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+<script>
+const form = document.querySelector(".chat-form");
+form.addEventListener("submit", () => {
+  document.body.style.opacity = "0";
+});
+</script>
+
+</body>
+</html>

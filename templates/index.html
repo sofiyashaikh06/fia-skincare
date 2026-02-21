@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIA Skincare | AI-Assisted Beauty</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+  <div class="nav">
+    <div class="logo">FIA 🌙</div>
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="{{ url_for('products') }}">Products</a></li>
+      <li><a href="/about">About</a></li>
+       <li><a href="{{ url_for('chatbot') }}">AI Chatbot</a></li>
+      <li><a href="/cart">Cart 🛒</a></li>
+
+    </ul>
+  </div>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>FIA SKIN</h1>
+    <p>Elevate Your Glow. Embrace Your Radiance.</p>
+
+    <div class="hero-buttons">
+     <a href="{{ url_for('products') }}" class="btn primary">
+    Discover More
+  </a>
+
+ <a href="{{url_for('chatbot')}}" class="btn secondary">
+  ✨ Skincare Assistant
+  <span>Ask me anything about skincare</span>
+</a>
+    </div>
+  </div>
+</section>
+<!-- ================= ABOUT PREVIEW ================= -->
+<section class="about-preview reveal">
+
+  <div class="about-container">
+
+    <div class="about-image">
+      <img src="{{ url_for('static', filename='images/about_home.jpg') }}" alt="About FIA Skincare">
+    </div>
+
+    <div class="about-text">
+      <h2>About <span>FIA Skincare</span></h2>
+
+      <p>
+        FIA Skincare blends artificial intelligence with clean, science-backed
+        formulations to create skincare that truly understands you.
+      </p>
+
+      <p class="highlight">
+        No confusion. No false promises. Just skincare made personal.
+      </p>
+
+      <a href="/about" class="btn primary">Learn More</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+ <div class="section-divider"></div>
+<section class="products reveal" id="products">
+  <h2>Our Bestsellers</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/cleanser.png') }}" alt="Cleanser">
+      <h3>Gentle Hydrating Cleanser</h3>
+      <p>Soft daily cleanser for dry & sensitive skin</p>
+      <a href="{{ url_for('product_detail', product_id=1) }}" class="btn">
+  View Product
+</a>
+
+    </div>
+
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/niacinamide_serum.png') }}" alt="Niacinamide Serum">
+      <h3>Niacinamide Serum</h3>
+      <p>Balances oil and reduces acne marks</p>
+     <a href="{{ url_for('product_detail', product_id=3) }}" class="btn">
+  View Product
+</a>
+
+    </div>
+
+    <div class="product-card">
+      <img src="{{ url_for('static', filename='images/oil_free_gel_moisturizer.png') }}" alt="Moisturizer">
+      <h3>Oil-Free Gel Moisturizer</h3>
+      <p>Lightweight hydration for oily skin</p>
+     <a href="{{ url_for('product_detail', product_id=5) }}" class="btn">
+  View Product
+</a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SKINCARE ROUTINE ================= -->
+<section class="routine reveal">
+
+  <h2>Your <span>Skincare Routine</span></h2>
+
+  <div class="routine-grid">
+
+    <div class="routine-card">
+      <span class="step">01</span>
+      <img src="{{ url_for('static', filename='images/routine_cleanse.jpg') }}">
+      <h3>Cleanse</h3>
+      <p>Start with a gentle cleanser to remove dirt and excess oil.</p>
+    </div>
+
+    <div class="routine-card">
+      <span class="step">02</span>
+      <img src="{{ url_for('static', filename='images/routine_treat.jpg') }}">
+      <h3>Treat</h3>
+      <p>Target concerns like acne, pigmentation, or dullness.</p>
+    </div>
+
+    <div class="routine-card">
+      <span class="step">03</span>
+      <img src="{{ url_for('static', filename='images/routine_moisturize.jpg') }}">
+      <h3>Moisturize</h3>
+      <p>Lock in hydration and strengthen your skin barrier.</p>
+    </div>
+
+  </div>
+
+  <div class="routine-cta">
+    <a href="{{ url_for('chatbot') }}" class="btn secondary">
+      ✨ Build My Routine with AI
+    </a>
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2026 FIA Skincare · AI-Assisted Beauty</p>
+</footer>
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+
+      if (sectionTop < windowHeight - 100) {
+        section.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // run once on load
+</script>
+
+</body>
+</html>

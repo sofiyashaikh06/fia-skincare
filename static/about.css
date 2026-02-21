@@ -1,0 +1,176 @@
+/* ================================
+   BRAND VARIABLES
+================================ */
+:root {
+  --pink-main: #ff5c9a;
+  --pink-soft: #fff1f6;
+  --pink-light: #ffe3ec;
+  --pink-glow: rgba(255, 92, 154, 0.25);
+
+  --text-dark: #2b2b2b;
+  --text-muted: #6b6b6b;
+
+  --white: #ffffff;
+}
+
+/* ================================
+   PAGE BASE
+================================ */
+.about-page {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fff6fa 100%
+  );
+  min-height: 100vh;
+  padding: 100px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
+.about-hero {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--pink-main);
+  margin-bottom: 16px;
+}
+
+.about-hero .tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.about-hero p {
+  color: var(--text-dark);
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ================================
+   MISSION SECTION
+================================ */
+.about-mission {
+  background: var(--white);
+  max-width: 900px;
+  margin: 0 auto 90px;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px var(--pink-glow);
+  text-align: center;
+}
+
+.about-mission h3 {
+  font-size: 1.6rem;
+  color: var(--pink-main);
+  margin-bottom: 16px;
+}
+
+.about-mission p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ================================
+   CORE VALUES SECTION
+================================ */
+.core-values {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+}
+
+.core-values h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+}
+
+/* Grid */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Value Card */
+.value-item {
+  background: var(--white);
+  padding: 35px 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(255, 92, 154, 0.15);
+  transition: all 0.35s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(255, 92, 154, 0.3);
+}
+
+/* Icon */
+.value-icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+}
+
+/* Title */
+.value-item h4 {
+  font-size: 1.2rem;
+  color: var(--pink-main);
+  margin-bottom: 10px;
+}
+
+/* Text */
+.value-item p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ================================
+   CTA SECTION
+================================ */
+.about-cta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.about-cta button {
+  background: var(--pink-main);
+  color: var(--white);
+  border: none;
+  padding: 15px 38px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px var(--pink-glow);
+  transition: all 0.3s ease;
+}
+
+.about-cta button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(255, 92, 154, 0.45);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .about-mission {
+    padding: 35px 25px;
+  }
+}

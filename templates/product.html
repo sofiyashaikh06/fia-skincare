@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>{{ product.name }}</h1>
+
+<img src="{{ url_for('static', filename=product.image) }}" width="300">
+
+<p><strong>Category:</strong> {{ product.category }}</p>
+<p><strong>Skin Type:</strong> {{ product.skin_type }}</p>
+<p><strong>Ingredients:</strong> {{ product.ingredients }}</p>
+<p>{{ product.description }}</p>
+
+<a href="{{ url_for('home') }}">Home</a>
+
+<a href="{{ url_for('products') }}" class="back-link">
+    ← Back to Products
+</a>
+
+
+</body>
+</html>
