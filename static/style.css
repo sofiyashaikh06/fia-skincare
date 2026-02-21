@@ -157,7 +157,7 @@ header,
 
 .btn.secondary {
   border: 2px solid #e94b7d;
-  color: #e94b7d;
+  color: #834b5d;
   background: white;
 }
 .about-preview {
@@ -517,7 +517,7 @@ img {
 
 /* ADD TO CART */
 .buy-btn {
-  background: linear-gradient(135deg, #ff4fa0, #ff82c6);
+  background: linear-gradient(135deg, #ff4fa0, #b6799a);
   color: white;
 }
 
@@ -759,12 +759,80 @@ img {
     transform: translateY(0);
   }
 }
+/* ============================= */
+/* MOBILE RESPONSIVE DESIGN */
+/* ============================= */
 
-/* ================= MOBILE ================= */
+@media (max-width: 768px) {
 
-@media (max-width: 480px) {
-  .chatbox {
-    width: 92%;
+  /* Navigation */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .nav ul li {
+    margin: 5px 0;
+  }
+
+  /* Hero / Headings */
+  h1, h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Products Grid */
+  .products-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Product Card */
+  .product-card {
+    width: 100%;
+  }
+
+  /* Cart Layout */
+  .cart-container {
+    flex-direction: column;
+  }
+
+  .cart-items,
+  .cart-summary {
+    width: 100%;
+  }
+
+  /* Checkout Layout */
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    width: 100%;
+  }
+
+  /* Buttons */
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Inputs */
+  input, textarea, select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -975,4 +1043,31 @@ img {
 .reveal.active {
   opacity: 1;
   transform: translateY(0) rotateX(0);
+}
+/* Fix button hover visibility */
+.btn {
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn.primary {
+  background: linear-gradient(45deg, #ff4d88, #ff1f5a);
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  background: linear-gradient(45deg, #ff6b9d, #ff3c6e); /* lighter shade */
+  color: #ffffff; /* force white text */
+  transform: translateY(-2px);
+}
+
+/* For pink rounded hero buttons */
+.hero .btn {
+  background: linear-gradient(45deg, #ff4d88, #ff1f5a);
+  color: white;
+}
+
+.hero .btn:hover {
+  background: linear-gradient(45deg, #ff6b9d, #ff3c6e);
+  color: white;
 }
