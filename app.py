@@ -85,17 +85,38 @@ def recommend():
 
     recommendations = []
 
-    if skin_type == "Dry" and concern == "Acne":
-        recommendations = [1, 3, 5]
+    # Acne
+    if concern == "Acne":
+        if skin_type == "Oily":
+            recommendations = [2, 5, 3, 7]
+        elif skin_type == "Dry":
+            recommendations = [1, 3, 6, 7]
+        elif skin_type == "Combination":
+            recommendations = [2, 3, 5, 7]
+        else:  # Normal
+            recommendations = [1, 3, 5, 7]
 
-    elif skin_type == "Oily" and concern == "Acne":
-        recommendations = [2, 8, 5]
+    # Pigmentation
+    elif concern == "Pigmentation":
+        recommendations = [4, 3, 7]
 
-    elif skin_type == "Dry" and concern == "Pigmentation":
-        recommendations = [4, 6, 7]
+        if skin_type == "Dry":
+            recommendations.append(6)
+        elif skin_type == "Oily":
+            recommendations.append(5)
 
-    else:
-        recommendations = []
+    # Dryness
+    elif concern == "Dryness":
+        recommendations = [1, 6, 8, 7]
+
+    # Dullness
+    elif concern == "Dullness":
+        recommendations = [4, 3, 7]
+
+        if skin_type == "Oily":
+            recommendations.append(5)
+        else:
+            recommendations.append(6)
 
     return render_template(
         'result.html',
@@ -104,7 +125,6 @@ def recommend():
         recommendations=recommendations,
         products=PRODUCTS
     )
-
 @app.route("/chatbot")
 def chatbot():
     return render_template("chatbot.html")
