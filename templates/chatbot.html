@@ -1,74 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>FIA AI Skin Advisor</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+{% extends "base.html" %}
+{% block content %}
 
-<body class="chat-body">
+<div class="chat-wrapper">
 
-<header class="navbar">
-  <div class="nav-container">
-    <div class="nav-logo"><a href="/">FIA 🌙</a></div>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="{{ url_for('products') }}">Products</a></li>
-      <li><a class="active">AI Assistant</a></li>
-      <li><a href="/cart">Cart 🛒</a></li>
-    </ul>
-  </div>
-</header>
+    <div class="chat-card">
+        <h2 class="chat-title">🌙 FIA AI Skin Assistant</h2>
+        <p class="chat-subtitle">Tell us your skin type & concern for a personalized routine</p>
 
-<main class="chatbot-page">
-  <div class="chatbox">
+        <div class="form-group">
+            <label>💧 Skin Type</label>
+            <select id="skinType">
+                <option value="">Select</option>
+                <option value="Dry">Dry</option>
+                <option value="Oily">Oily</option>
+                <option value="Combination">Combination</option>
+                <option value="Sensitive">Sensitive</option>
+            </select>
+        </div>
 
-    <div class="chat-header pink">
-      <h3>FIA 🌙 Skin Advisor</h3>
-      <span>AI Guided Care</span>
-    </div>
+        <div class="form-group">
+            <label>🎯 Skin Concern</label>
+            <select id="concern">
+                <option value="">Select</option>
+                <option value="Acne">Acne</option>
+                <option value="Pigmentation">Pigmentation</option>
+                <option value="Dull Skin">Dull Skin</option>
+                <option value="Dark Spots">Dark Spots</option>
+            </select>
+        </div>
 
-    <div class="chat-content">
-      <p class="bot-message">
-        Hi 👋 I’ll help you find the best skincare routine 💖  
-        Just answer 2 quick questions!
-      </p>
-
-      <form action="/recommend" method="POST" class="chat-form">
-
-        <label>💧 Skin Type</label>
-        <select name="skin_type" required>
-          <option value="">Select</option>
-          <option>Dry</option>
-          <option>Oily</option>
-          <option>Normal</option>
-          <option>Combination</option>
-        </select>
-<br>
-        <label>🎯 Concern</label>
-        <select name="concern" required>
-          <option value="">Select</option>
-          <option>Acne</option>
-          <option>Pigmentation</option>
-          <option>Dryness</option>
-          <option>Dullness</option>
-        </select>
-
-        <button type="submit" class="btn primary">
-                  ✨ Get My Routine
+        <button class="premium-btn" onclick="generateRoutine()">
+            ✨ Get My Routine
         </button>
 
-      </form>
+        <div class="chat-result" id="resultBox">
+            <p>Your personalized skincare routine will appear here...</p>
+        </div>
+
     </div>
 
-  </div>
-</main>
+</div>
+
+<!-- JavaScript -->
 <script>
-const form = document.querySelector(".chat-form");
-form.addEventListener("submit", () => {
-  document.body.style.opacity = "0";
-});
+function generateRoutine() {
+    const skinType = document.getElementById("skinType").value;
+    const concern = document.getElementById("concern").value;
+    const resultBox = document.getElementById("resultBox");
+
+    if (!skinType || !concern) {
+        resultBox.innerHTML = "<p style='color:#ff4f81;'>Please select both options 💖</p>";
+        return;
+    }
+
+    let routine = `
+        <h4>🌸 Recommended Routine:</h4>
+        <ul style="text-align:left;">
+            <li>🧼 Gentle Cleanser for ${skinType} skin</li>
+            <li>🌿 Treatment for ${concern}</li>
+            <li>💧 Hydrating Moisturizer</li>
+            <li>☀️ Sunscreen (SPF 50)</li>
+        </ul>
+    `;
+
+    resultBox.innerHTML = routine;
+}
 </script>
 
-</body>
-</html>
+{% endblock %}

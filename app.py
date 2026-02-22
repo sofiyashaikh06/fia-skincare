@@ -3,49 +3,64 @@ PRODUCTS = {
         "name": "Gentle Hydrating Cleanser",
         "price": "₹499",
         "description": "Soft daily cleanser for dry & sensitive skin",
-        "image": "images/cleanser.png"
+        "image": "images/cleanser.png",
+      "category": "Cleanser"
+
     },
     2: {
         "name": "Acne Control Cleanser",
         "price": "₹549",
         "description": "Controls excess oil and acne",
-        "image": "images/acne_control_cleanser.png"
+        "image": "images/acne_control_cleanser.png",
+                "category": "Cleanser"
+
     },
     3: {
         "name": "Niacinamide Serum",
         "price": "₹699",
         "description": "Reduces pores & boosts glow",
-        "image": "images/niacinamide_serum.png"
+        "image": "images/niacinamide_serum.png",
+                "category": "Serum"
+
     },
     4: {
         "name": "Vitamin C Serum",
         "price": "₹799",
         "description": "Brightens skin tone",
-        "image": "images/vitamin_c_serum.png"
+        "image": "images/vitamin_c_serum.png",
+                "category": "Serum"
+
     },
     5: {
         "name": "Oil-Free Gel Moisturizer",
         "price": "₹599",
         "description": "Lightweight hydration",
-        "image": "images/oil_free_gel_moisturizer.png"
+        "image": "images/oil_free_gel_moisturizer.png",
+                "category": "Moisturizer"
+
     },
     6: {
         "name": "Deep Moisture Cream",
         "price": "₹749",
         "description": "Nourishes and restores skin",
-        "image": "images/moisture_cream.png"
+        "image": "images/moisture_cream.png",
+                "category": "Moisturizer"
+
     },
     7: {
         "name": "SPF 50+ Sunscreen",
         "price": "₹699",
         "description": "Broad spectrum protection",
-        "image": "images/sunscreen_lotion.png"
+        "image": "images/sunscreen_lotion.png",
+                "category": "Sunscreen"
     },
     8: {
         "name": "Salicylic Acid Spot Treatment",
         "price": "₹449",
         "description": "Targets acne & reduces redness",
-        "image": "images/salicylic_acid.png"
+        "image": "images/salicylic_acid.png",
+                "category": "Serum"
+
     }
 }
 
@@ -63,11 +78,25 @@ def home():
 # ---------------- PRODUCTS ----------------
 @app.route("/products")
 def products():
-    return render_template("products.html")
+    category = request.args.get("category")
 
+    if category:
+        category = category.lower()   # <-- important safety line
+        filtered_products = {
+            id: product
+            for id, product in PRODUCTS.items()
+            if product["category"].lower() == category
+            
+        }
+    else:
+        filtered_products = PRODUCTS
+
+    return render_template("products.html", products=filtered_products)
+# ---------------- PRODUCT DETAIL ----------------
 @app.route("/product/<int:product_id>")
 def product_detail(product_id):
     product = PRODUCTS.get(product_id)
+
     if not product:
         return "Product not found", 404
 
@@ -76,7 +105,6 @@ def product_detail(product_id):
         product=product,
         product_id=product_id
     )
-
 # ---------------- CHATBOT ----------------
 @app.route('/recommend', methods=['POST'])
 def recommend():
@@ -254,7 +282,6 @@ def checkout():
 def order_success():
     return render_template("order_success.html")
 
-
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

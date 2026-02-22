@@ -715,7 +715,102 @@ img {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(255, 79, 160, 0.4);
 }
+/* Background */
+body {
+    background: linear-gradient(to bottom, #fff5f8, #f8d7e1);
+    font-family: 'Poppins', sans-serif;
+}
 
+/* Wrapper */
+.chat-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+}
+
+/* Main Card */
+.chat-card {
+    width: 600px;
+    padding: 40px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 10px 20px rgba(255, 105, 135, 0.2);
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+/* 3D Hover Effect */
+.chat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.12),
+        0 15px 30px rgba(255, 105, 135, 0.25);
+}
+
+/* Title */
+.chat-title {
+    color: #ff4f81;
+    margin-bottom: 25px;
+}
+
+/* Form */
+.form-row {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-weight: 500;
+    color: #444;
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ffd1dc;
+    outline: none;
+    transition: 0.3s;
+}
+
+select:focus {
+    border-color: #ff4f81;
+    box-shadow: 0 0 8px rgba(255, 79, 129, 0.3);
+}
+
+/* Premium Button */
+.premium-btn {
+    background: linear-gradient(135deg, #ff4f81, #ff7aa2);
+    border: none;
+    padding: 12px 30px;
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 8px 20px rgba(255, 79, 129, 0.3);
+}
+
+.premium-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 79, 129, 0.4);
+}
+
+/* Result Box */
+.chat-result {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff5f8;
+    border-radius: 15px;
+    min-height: 80px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.05);
+}
 /* ================= BACK LINK ================= */
 
 .back-link {
@@ -1070,4 +1165,36 @@ img {
 .hero .btn:hover {
   background: linear-gradient(45deg, #ff6b9d, #ff3c6e);
   color: white;
+}
+/* CATEGORY BUTTONS */
+.category-buttons {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.cat-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 8px;
+    background-color: #f3f3f3;
+    color: #cf225f;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+/* Hover effect */
+.cat-btn:hover {
+    background-color: #e33a75;
+    color: #fff;
+    border-color: #ef72a4;
+}
+@media (max-width: 600px) {
+    .cat-btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
 }

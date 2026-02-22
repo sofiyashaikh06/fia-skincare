@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Products | FIA Skincare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar">
     <div class="nav-container">
         <a class="logo" href="/">FIA 🌙</a>
@@ -17,92 +19,40 @@
             <li><a href="{{ url_for('chatbot') }}">AI Assistant</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/cart">Cart 🛒</a></li>
-
         </ul>
     </div>
 </header>
 
-
-
+<!-- PRODUCTS SECTION -->
 <section class="products-page">
+
     <h1>Our Products</h1>
     <p class="subtitle">Dermatologist-inspired, AI-recommended skincare</p>
 
+    <!-- CATEGORY BUTTONS -->
+    <div class="category-buttons">
+        <a href="{{ url_for('products') }}" class="cat-btn">All</a>
+       <a href="{{ url_for('products', category='cleanser') }}" class="cat-btn">Cleanser</a>
+<a href="{{ url_for('products', category='serum') }}" class="cat-btn">Serum</a>
+<a href="{{ url_for('products', category='moisturizer') }}" class="cat-btn">Moisturizer</a>
+<a href="{{ url_for('products', category='sunscreen') }}" class="cat-btn">Sunscreen</a>
+    </div>
+
+    <!-- PRODUCT GRID -->
     <div class="product-grid">
-
-        <!-- Product Card -->
+        
+        {% for id, product in products.items() %}
         <div class="product-card">
-            <img src="{{ url_for('static', filename='images/cleanser.png') }}">
-            <h3>Gentle Hydrating Cleanser</h3>
-            <p>Soft daily cleanser for dry & sensitive skin</p>
-            <span class="price">₹499</span>
-<a href="/product/1" class="btn">View Details</a>
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <span class="price">{{ product.price }}</span>
+            <a href="/product/{{ id }}" class="btn">View Details</a>
         </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/acne_control_cleanser.png') }}">
-            <h3>Acne Control Cleanser</h3>
-            <p>Controls excess oil and acne</p>
-            <span class="price">₹549</span>
-            <a href="/product/2" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/niacinamide_serum.png') }}">
-            <h3>Niacinamide Glow Serum</h3>
-            <p>Reduces pores & boosts glow</p>
-            <span class="price">₹699</span>
-           <a href="/product/3" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/vitamin_c_serum.png') }}">
-            <h3>Vitamin C Serum</h3>
-            <p>Brightens skin tone</p>
-            <span class="price">₹799</span>
-            <a href="/product/4" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/oil_free_gel_moisturizer.png') }}">
-            <h3>Oil-Free Gel Moisturizer</h3>
-            <p>Lightweight hydration</p>
-            <span class="price">₹599</span>
-           <a href="/product/5" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/moisture_cream.png') }}">
-            <h3>Hydrating Moisturizer</h3>
-            <p>Noureshis and restore skin </p>
-            <span class="price">₹749</span>
-           <a href="/product/6" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/sunscreen_lotion.png') }}">
-            <h3>SPF 50 Sunscreen</h3>
-            <p>Broad spectrum protection</p>
-            <span class="price">₹699</span>
-            <a href="/product/7" class="btn">View Details</a>
-
-        </div>
-
-        <div class="product-card">
-            <img src="{{ url_for('static', filename='images/salicylic_acid.png') }}">
-            <h3>sensitive skin suncreen</h3>
-            <p>Soothes irritated skin</p>
-            <span class="price">₹449</span>
-            <a href="/product/8" class="btn">View Details</a>
-
-        </div>
+        {% endfor %}
 
     </div>
+
 </section>
 
 </body>

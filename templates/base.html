@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIA Skincare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav style="padding:20px; background:#ffe6ec; display:flex; justify-content:space-between;">
+        <h2 style="color:#ff4f81;">FIA 🌙</h2>
+        <div>
+            <a href="/" style="margin-right:20px;">Home</a>
+            <a href="/products" style="margin-right:20px;">Products</a>
+            <a href="/chatbot">AI Assistant</a>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>
