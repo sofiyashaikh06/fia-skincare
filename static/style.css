@@ -691,6 +691,15 @@ img {
   border-color: #ff4fa0;
   box-shadow: 0 0 0 3px rgba(255, 79, 160, 0.15);
 }
+.chat-result-card a {
+    color: #ff4f81;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.chat-result-card a:hover {
+    text-decoration: underline;
+}
 
 /* ================= FOOTER ================= */
 
@@ -857,82 +866,117 @@ select:focus {
 /* ============================= */
 /* MOBILE RESPONSIVE DESIGN */
 /* ============================= */
-
 @media (max-width: 768px) {
 
-  /* Navigation */
-  .nav {
-    flex-direction: column;
-    align-items: center;
+  /* Navbar */
+  .nav,
+  .nav-container {
+    padding: 15px 20px;
   }
 
-  .nav ul {
-    flex-direction: column;
-    gap: 10px;
-    padding: 0;
+  .nav-links {
+    gap: 16px;
   }
 
-  .nav ul li {
-    margin: 5px 0;
+  .nav-links a {
+    font-size: 14px;
   }
 
-  /* Hero / Headings */
-  h1, h2 {
-    font-size: 22px;
-    text-align: center;
+  /* Hero */
+  .hero {
+    height: 75vh;
+    padding: 0 20px;
   }
 
-  /* Products Grid */
-  .products-container {
-    grid-template-columns: 1fr;
+  .hero h1 {
+    font-size: 38px;
   }
 
-  /* Product Card */
-  .product-card {
-    width: 100%;
+  .hero p {
+    font-size: 15px;
   }
 
-  /* Cart Layout */
+  /* Sections spacing */
+  .products,
+  .routine,
+  .about,
+  .checkout,
   .cart-container {
-    flex-direction: column;
+    margin-top: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  .cart-items,
-  .cart-summary {
-    width: 100%;
+  /* Product Grid */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
-  /* Checkout Layout */
+  .product-card {
+    padding: 22px;
+  }
+
+  .product-card img {
+    height: 200px;
+  }
+
+  /* Product Detail */
+  .product-detail-container {
+    padding: 30px 20px;
+  }
+
+  .product-info h1 {
+    font-size: 26px;
+  }
+
+  /* Routine Section */
+  .routine-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .routine-card img {
+    height: 220px;
+  }
+
+  /* About Section */
+  .about-wrapper {
+    gap: 30px;
+  }
+
+  .about-image img {
+    max-height: 280px;
+  }
+
+  /* Chatbot */
+  .chat-card {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .chat-title {
+    font-size: 20px;
+  }
+
+  /* Checkout */
   .checkout-container {
-    flex-direction: column;
+    gap: 25px;
   }
 
   .checkout-form,
   .checkout-summary {
-    width: 100%;
+    padding: 25px;
   }
 
-  /* Buttons */
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Inputs */
-  input, textarea, select {
-    width: 100%;
+  /* Buttons stay premium */
+  .btn,
+  .premium-btn {
+    padding: 10px 20px;
     font-size: 14px;
   }
 
-  /* Images */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
 }
-
-
-
 
 /* =====================================================
    ANIMATIONS

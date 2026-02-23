@@ -19,12 +19,12 @@
         </div>
 
         <div class="form-group">
-            <label>🎯 Skin Concern</label>
+            <label>🎯 Skin Concern</label> 
             <select id="concern">
                 <option value="">Select</option>
                 <option value="Acne">Acne</option>
-                <option value="Pigmentation">Pigmentation</option>
-                <option value="Dull Skin">Dull Skin</option>
+<option value="Pigmentation">Pigmentation</option>
+<option value="Dullness">Dullness</option>
                 <option value="Dark Spots">Dark Spots</option>
             </select>
         </div>
@@ -53,17 +53,41 @@ function generateRoutine() {
         return;
     }
 
-    let routine = `
-        <h4>🌸 Recommended Routine:</h4>
-        <ul style="text-align:left;">
-            <li>🧼 Gentle Cleanser for ${skinType} skin</li>
-            <li>🌿 Treatment for ${concern}</li>
-            <li>💧 Hydrating Moisturizer</li>
-            <li>☀️ Sunscreen (SPF 50)</li>
-        </ul>
-    `;
+    fetch("/recommend", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `skin_type=${skinType}&concern=${concern}`
+    })
+    .then(response => response.json())   // ✅ CHANGE HERE
+    .then(data => {
 
-    resultBox.innerHTML = routine;
+        if (data.length === 0) {
+            resultBox.innerHTML = "<p>No products found 😢</p>";
+            return;
+        }
+
+        let html = "<h3>✨ Recommended Products:</h3><ul>";
+
+        data.forEach(product => {
+            html += `
+                <li style="margin:10px 0;">
+                    <a href="${product.url}" 
+                       style="color:#ff4f81; font-weight:600; text-decoration:none;">
+                       ${product.name}
+                    </a>
+                </li>
+            `;
+        });
+
+        html += "</ul>";
+
+        resultBox.innerHTML = html;
+    })
+    .catch(error => {
+        resultBox.innerHTML = "<p style='color:red;'>Something went wrong 😢</p>";
+    });
 }
 </script>
 

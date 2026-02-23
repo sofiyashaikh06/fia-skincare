@@ -106,53 +106,52 @@ def product_detail(product_id):
         product_id=product_id
     )
 # ---------------- CHATBOT ----------------
-@app.route('/recommend', methods=['POST'])
+@app.route("/recommend", methods=["POST"])
 def recommend():
-    skin_type = request.form.get('skin_type')
-    concern = request.form.get('concern')
+    skin_type = request.form.get("skin_type")
+    concern = request.form.get("concern")
 
-    recommendations = []
+    recommended_ids = set()   # prevents duplicates
 
-    # Acne
+    # ---------------- SKIN TYPE LOGIC ----------------
+    if skin_type == "Dry":
+        recommended_ids.update([1, 6, 4, 7])
+
+    elif skin_type == "Oily":
+        recommended_ids.update([2, 5, 3, 7])
+
+    elif skin_type == "Combination":
+        recommended_ids.update([1, 5, 3, 7])
+
+    elif skin_type == "Sensitive":
+        recommended_ids.update([1, 6, 7])
+
+    # ---------------- PROBLEM LOGIC ----------------
     if concern == "Acne":
-        if skin_type == "Oily":
-            recommendations = [2, 5, 3, 7]
-        elif skin_type == "Dry":
-            recommendations = [1, 3, 6, 7]
-        elif skin_type == "Combination":
-            recommendations = [2, 3, 5, 7]
-        else:  # Normal
-            recommendations = [1, 3, 5, 7]
+        recommended_ids.update([2, 3, 5, 7])
 
-    # Pigmentation
     elif concern == "Pigmentation":
-        recommendations = [4, 3, 7]
+        recommended_ids.update([4, 3, 7])
 
-        if skin_type == "Dry":
-            recommendations.append(6)
-        elif skin_type == "Oily":
-            recommendations.append(5)
+    elif concern == "Dark Spots":
+        recommended_ids.update([4, 3, 7])
 
-    # Dryness
-    elif concern == "Dryness":
-        recommendations = [1, 6, 8, 7]
-
-    # Dullness
     elif concern == "Dullness":
-        recommendations = [4, 3, 7]
+        recommended_ids.update([4, 1, 6, 7])
 
-        if skin_type == "Oily":
-            recommendations.append(5)
-        else:
-            recommendations.append(6)
+    # ---------------- BUILD RESPONSE ----------------
+    recommended = []
 
-    return render_template(
-        'result.html',
-        skin_type=skin_type,
-        concern=concern,
-        recommendations=recommendations,
-        products=PRODUCTS
-    )
+    for pid in recommended_ids:
+        product = PRODUCTS.get(pid)
+        if product:
+            recommended.append({
+                "name": product["name"],
+                "url": f"/product/{pid}"
+            })
+
+    return jsonify(recommended)
+
 @app.route("/chatbot")
 def chatbot():
     return render_template("chatbot.html")
