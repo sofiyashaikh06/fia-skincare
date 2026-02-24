@@ -5,7 +5,8 @@
 
     <div class="chat-card">
         <h2 class="chat-title">🌙 FIA AI Skin Assistant</h2>
-        <p class="chat-subtitle">Tell us your skin type & concern for a personalized routine</p>
+        <p class="chat-subtitle">🧠 Our AI analyzes your skin profile to create a smart routine tailored just for you.
+        </p>
 
         <div class="form-group">
             <label>💧 Skin Type</label>
@@ -30,7 +31,7 @@
         </div>
 
         <button class="premium-btn" onclick="generateRoutine()">
-            ✨ Get My Routine
+            ✨ Generate My AI Routine
         </button>
 
         <div class="chat-result" id="resultBox">
@@ -53,41 +54,62 @@ function generateRoutine() {
         return;
     }
 
-    fetch("/recommend", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: `skin_type=${skinType}&concern=${concern}`
-    })
-    .then(response => response.json())   // ✅ CHANGE HERE
-    .then(data => {
+    // 🧠 Typing Animation Start
+    resultBox.innerHTML = `
+        <div class="ai-typing">
+            <span>Analyzing your skin profile</span>
+            <div class="dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    `;
 
-        if (data.length === 0) {
-            resultBox.innerHTML = "<p>No products found 😢</p>";
-            return;
-        }
+    setTimeout(() => {
 
-        let html = "<h3>✨ Recommended Products:</h3><ul>";
+        fetch("/recommend", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `skin_type=${skinType}&concern=${concern}`
+        })
+        .then(response => response.json())
+        .then(data => {
 
-        data.forEach(product => {
-            html += `
-                <li style="margin:10px 0;">
-                    <a href="${product.url}" 
-                       style="color:#ff4f81; font-weight:600; text-decoration:none;">
-                       ${product.name}
-                    </a>
-                </li>
+            if (data.length === 0) {
+                resultBox.innerHTML = "<p>No products found 😢</p>";
+                return;
+            }
+
+            let html = `
+                <p class="ai-complete">🧠 AI Analysis Complete!</p>
+                <p class="ai-summary">
+                    Based on your <b>${skinType}</b> skin and 
+                    <b>${concern}</b> concern, here is your optimized routine:
+                </p>
+                <ul class="ai-product-list">
             `;
+
+            data.forEach(product => {
+                html += `
+                    <li>
+                        <a href="${product.url}">
+                            ✨ ${product.name}
+                        </a>
+                    </li>
+                `;
+            });
+
+            html += "</ul>";
+
+            resultBox.innerHTML = html;
+
+        })
+        .catch(error => {
+            resultBox.innerHTML = "<p style='color:red;'>Something went wrong 😢</p>";
         });
 
-        html += "</ul>";
-
-        resultBox.innerHTML = html;
-    })
-    .catch(error => {
-        resultBox.innerHTML = "<p style='color:red;'>Something went wrong 😢</p>";
-    });
+    }, 1800); // delay for realistic AI effect
 }
 </script>
 
