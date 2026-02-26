@@ -46,7 +46,7 @@
             <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
             <h3>{{ product.name }}</h3>
             <p>{{ product.description }}</p>
-            <span class="price">{{ product.price }}</span>
+            <span class="price">₹{{ product.price }}</span>
             <a href="/product/{{ id }}" class="btn">View Details</a>
         </div>
         {% endfor %}

@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <title>{{ product.name }} | FIA Skincare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
 </head>
-<script>
-function addToCart() {
-  alert("✅ Product added to cart (feature coming soon 💖)");
-}
-</script>
 
 <body>
 
@@ -31,30 +27,90 @@ function addToCart() {
 </header>
 
 <section class="product-detail">
-    <div class="product-detail-container">
 
-        <div class="product-image">
-            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-        </div>
+  <!-- ================= TOP BLOCK ================= -->
+  <div class="product-top">
 
-        <div class="product-info">
-            <h1>{{ product.name }}</h1>
-            <p class="price">{{ product.price }}</p>
-            <p class="description">{{ product.description }}</p>
+    <div class="product-image">
+      <img src="{{ url_for('static', filename=product.image) }}"
+           class="clickable-img">
+    </div>
 
-          <a href="{{ url_for('add_to_cart', product_id=product_id) }}" class="buy-btn">
-  Add to Cart
-</a>
+    <div class="product-info">
+      <h1>{{ product.name }}</h1>
 
+      <div class="rating">
+        ⭐⭐⭐⭐☆
+        <span class="rating-count">(124 reviews)</span>
+      </div>
 
-           <a href="{{ url_for('chatbot') }}" class="ai-btn">
-  Ask AI Advisor
-</a>
+      <div class="price">₹{{ product.price }}</div>
 
-        </div>
+      <p class="short-desc">{{ product.description }}</p>
+
+      <div class="button-group">
+        <a href="{{ url_for('add_to_cart', product_id=product_id) }}" class="buy-btn">
+          Add to Cart
+        </a>
+
+        <a href="{{ url_for('chatbot') }}" class="ai-btn">
+          Ask AI Advisor
+        </a>
+      </div>
 
     </div>
-</section>
 
+  </div>
+
+
+  <!-- ================= SCROLL SECTION ================= -->
+  <div class="product-extra hidden" id="extraSection">
+
+      <div class="extra-grid">
+
+          <div class="extra-box">
+              <h3>About This Product</h3>
+              <p>{{ product.full_description }}</p>
+          </div>
+
+          <div class="extra-box">
+              <h3>Key Ingredients</h3>
+              <ul>
+                {% for item in product.ingredients %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+          </div>
+
+          <div class="extra-box">
+              <h3>Benefits</h3>
+              <ul>
+                {% for item in product.benefits %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+          </div>
+
+          <div class="extra-box">
+              <h3>How To Use</h3>
+              <p>{{ product.how_to_use }}</p>
+          </div>
+
+      </div>
+
+  </div>
+
+</section>
+<script>
+window.addEventListener("scroll", function() {
+  const section = document.getElementById("extraSection");
+  const position = section.getBoundingClientRect().top;
+  const screenHeight = window.innerHeight;
+
+  if (position < screenHeight - 100) {
+    section.classList.add("show");
+  }
+});
+</script>
 </body>
 </html>

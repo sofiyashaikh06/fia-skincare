@@ -1,65 +1,203 @@
 PRODUCTS = {
     1: {
         "name": "Gentle Hydrating Cleanser",
-        "price": "₹499",
+        "price": "499",
         "description": "Soft daily cleanser for dry & sensitive skin",
         "image": "images/cleanser.png",
-      "category": "Cleanser"
+      "category": "Cleanser",
+     "full_description": "A mild, non-stripping daily cleanser designed to gently remove dirt, oil, and impurities while maintaining the skin’s natural moisture barrier.",
 
+        "ingredients": [
+            "Hyaluronic Acid",
+            "Aloe Vera Extract",
+            "Chamomile Extract",
+            "Glycerin"
+        ],
+
+        "benefits": [
+            "Deep yet gentle cleansing",
+            "Maintains hydration",
+            "Soothes sensitive skin",
+            "Prevents dryness after washing"
+        ],
+
+        "how_to_use": "Massage onto damp skin for 30–40 seconds. Rinse with lukewarm water. Use morning and night."
     },
     2: {
         "name": "Acne Control Cleanser",
-        "price": "₹549",
+        "price": "549",
         "description": "Controls excess oil and acne",
         "image": "images/acne_control_cleanser.png",
-                "category": "Cleanser"
+                "category": "Cleanser",
+                 "full_description": "A purifying cleanser formulated to reduce excess oil, unclog pores, and help prevent breakouts without over-drying the skin.",
+
+        "ingredients": [
+            "Salicylic Acid",
+            "Tea Tree Extract",
+            "Niacinamide",
+            "Aloe Vera"
+        ],
+
+        "benefits": [
+            "Controls excess oil",
+            "Reduces active acne",
+            "Prevents clogged pores",
+            "Calms redness"
+        ],
+
+        "how_to_use": "Apply to wet face, massage gently focusing on acne-prone areas. Rinse thoroughly. Use twice daily."
 
     },
     3: {
         "name": "Niacinamide Serum",
-        "price": "₹699",
+        "price": "699",
         "description": "Reduces pores & boosts glow",
         "image": "images/niacinamide_serum.png",
-                "category": "Serum"
+                "category": "Serum",
+                 "full_description": "A lightweight serum enriched with 10% Niacinamide to visibly minimize pores, balance oil, and enhance overall skin glow.",
+
+        "ingredients": [
+            "Niacinamide (10%)",
+            "Zinc PCA",
+            "Hyaluronic Acid",
+            "Vitamin B5"
+        ],
+
+        "benefits": [
+            "Reduces enlarged pores",
+            "Controls sebum production",
+            "Improves skin texture",
+            "Boosts natural glow"
+        ],
+
+        "how_to_use": "Apply 2–3 drops to clean skin before moisturizer. Use morning and night. Follow with sunscreen in daytime."
 
     },
     4: {
         "name": "Vitamin C Serum",
-        "price": "₹799",
+        "price": "799",
         "description": "Brightens skin tone",
         "image": "images/vitamin_c_serum.png",
-                "category": "Serum"
+                "category": "Serum",
+                 "full_description": "An antioxidant-rich serum that brightens skin tone, reduces pigmentation, and protects against environmental damage.",
+
+        "ingredients": [
+            "Vitamin C (Ascorbic Acid)",
+            "Ferulic Acid",
+            "Vitamin E",
+            "Hyaluronic Acid"
+        ],
+
+        "benefits": [
+            "Brightens dull skin",
+            "Reduces dark spots",
+            "Improves skin radiance",
+            "Protects from free radicals"
+        ],
+
+        "how_to_use": "Apply 2–3 drops on clean, dry skin. Use in morning routine before moisturizer and sunscreen."
 
     },
     5: {
         "name": "Oil-Free Gel Moisturizer",
-        "price": "₹599",
+        "price": "599",
         "description": "Lightweight hydration",
         "image": "images/oil_free_gel_moisturizer.png",
-                "category": "Moisturizer"
+                "category": "Moisturizer",
+                 "full_description": "A lightweight, non-comedogenic gel moisturizer specially formulated for oily and acne-prone skin.",
+
+        "ingredients": [
+            "Hyaluronic Acid",
+            "Niacinamide",
+            "Green Tea Extract",
+            "Aloe Vera"
+        ],
+
+        "benefits": [
+            "Hydrates without greasiness",
+            "Controls shine",
+            "Lightweight & fast absorbing",
+            "Won’t clog pores"
+        ],
+
+        "how_to_use": "Apply evenly on face after serum. Use morning and night."
 
     },
     6: {
         "name": "Deep Moisture Cream",
-        "price": "₹749",
+        "price": "749",
         "description": "Nourishes and restores skin",
         "image": "images/moisture_cream.png",
-                "category": "Moisturizer"
+                "category": "Moisturizer",
+                  "full_description": "A rich cream moisturizer designed to deeply nourish dry and dehydrated skin while strengthening the skin barrier.",
+
+        "ingredients": [
+            "Shea Butter",
+            "Ceramides",
+            "Hyaluronic Acid",
+            "Vitamin E"
+        ],
+
+        "benefits": [
+            "Deep hydration",
+            "Repairs dry skin",
+            "Improves elasticity",
+            "Soft & smooth finish"
+        ],
+
+        "how_to_use": "Apply a small amount after cleansing and serum. Use twice daily."
 
     },
     7: {
         "name": "SPF 50+ Sunscreen",
-        "price": "₹699",
+        "price": "699",
         "description": "Broad spectrum protection",
         "image": "images/sunscreen_lotion.png",
-                "category": "Sunscreen"
+                "category": "Sunscreen",
+
+        "full_description": "Broad-spectrum SPF 50 sunscreen that protects against UVA & UVB rays while keeping skin lightweight and non-greasy.",
+
+        "ingredients": [
+            "Zinc Oxide",
+            "Titanium Dioxide",
+            "Vitamin E",
+            "Aloe Vera"
+        ],
+
+        "benefits": [
+            "Prevents sun damage",
+            "Reduces tanning",
+            "Lightweight texture",
+            "Suitable for daily use"
+        ],
+
+        "how_to_use": "Apply generously 15 minutes before sun exposure. Reapply every 2–3 hours."
     },
     8: {
         "name": "Salicylic Acid Spot Treatment",
-        "price": "₹449",
+        "price": "449",
         "description": "Targets acne & reduces redness",
         "image": "images/salicylic_acid.png",
-                "category": "Serum"
+                "category": "Serum",
+                
+        "full_description": "A targeted treatment designed to reduce active breakouts, minimize redness, and speed up acne healing.",
+
+        "ingredients": [
+            "Salicylic Acid",
+            "Tea Tree Extract",
+            "Niacinamide",
+            "Aloe Vera"
+        ],
+
+        "benefits": [
+            "Reduces active acne",
+            "Minimizes redness",
+            "Prevents future breakouts",
+            "Fast acting formula"
+        ],
+
+        "how_to_use": "Apply a small amount directly onto affected areas after cleansing. Use once or twice daily."
+
 
     }
 }
